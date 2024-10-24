@@ -7,7 +7,7 @@ function EmailEnviado() {
     <div
       className=" flex items-center h-screen bg-cover bg-center"
       style={{
-        backgroundImage: `url(${BgImageBlank})`,
+        backgroundImage: `url(${BgImageBlank})` ,
       }}
     >
       <SectionArea>
