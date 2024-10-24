@@ -10,10 +10,14 @@ function FormWhatsappJS() {
   const [email, setEmail] = useState("");
   const [lastname, setLastName] = useState("");
   const [message, setMessage] = useState("");
-  const [agree, setAgree] = useState(false); // Estado para checkbox
+  const [agree, setAgree] = useState(false); 
 
   function sendEmail(e) {
     e.preventDefault();
+
+    if(Companyname ==="" || name === "" || phone=== "" || email === "" || lastname ==="" || message === ""){
+        alert("Preencha todos os campos")
+    }
 
     if (!agree) {
       alert("Você precisa concordar com os termos para enviar o formulário.");
@@ -28,10 +32,10 @@ function FormWhatsappJS() {
 
     emailjs
       .send(
-        "service_dbjb7ym", // Verifique o ID do serviço
-        "template_2bu0xc5", // Verifique o ID do template
+        "service_dbjb7ym", 
+        "template_2bu0xc5", 
         templateParams,
-        "HkoWapgpzEJhNjsHU" // Verifique a chave pública
+        "HkoWapgpzEJhNjsHU" 
       )
       .then(
         (response) => {
@@ -57,8 +61,8 @@ function FormWhatsappJS() {
   return (
     <SectionArea>
       <SectionWrapper>
-        <div className="flex flex-col items-center justify-center w-full bg-gray-500 p-6 font-mainFont">
-          <h1 className="text-3xl font-bold mb-6">Contato</h1>
+        <div className="flex flex-col items-center justify-center w-full bg-[#1E1E1E] p-6 font-mainFont rounded-md">
+          <h1 className="text-title5 font-bold mb-6 text-white">Contato</h1>
           <form
             className="bg-transparente rounded-lg w-full"
             onSubmit={sendEmail}
@@ -66,9 +70,9 @@ function FormWhatsappJS() {
             <div className="flex  flex-col desktop1:flex-row w-full gap-4">
               <div className="w-full">
                 <div className="mb-4 w-full">
-                  <h6>Nome da Empresa</h6>
+                  <h6 className="text-gray-300">Nome da Empresa</h6>
                   <input
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     type="text"
                     placeholder="Digite o nome da Empresa"
                     onChange={(e) => setCompanyName(e.target.value)}
@@ -76,9 +80,9 @@ function FormWhatsappJS() {
                   />
                 </div>
                 <div className="mb-4">
-                  <h6>Nome</h6>
+                  <h6 className="text-gray-300">Nome</h6>
                   <input
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     type="text"
                     placeholder="Digite seu nome"
                     onChange={(e) => setName(e.target.value)}
@@ -86,9 +90,9 @@ function FormWhatsappJS() {
                   />
                 </div>
                 <div className="mb-4">
-                  <h6>Número de celular</h6>
+                  <h6 className="text-gray-300">Número de celular</h6>
                   <input
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     type="number"
                     placeholder="Digite seu número"
                     onChange={(e) => setNumber(e.target.value)}
@@ -98,9 +102,9 @@ function FormWhatsappJS() {
               </div>
               <div className="w-full">
                 <div className="mb-4">
-                  <h6>E-mail Corporativo</h6>
+                  <h6 className="text-gray-300">E-mail Corporativo</h6>
                   <input
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     type="email"
                     placeholder="Digite seu email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -108,9 +112,9 @@ function FormWhatsappJS() {
                   />
                 </div>
                 <div className="mb-4">
-                  <h6>Sobrenome</h6>
+                  <h6 className="text-gray-300">Sobrenome</h6>
                   <input
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     type="text"
                     placeholder="Digite seu sobrenome"
                     onChange={(e) => setLastName(e.target.value)}
@@ -118,9 +122,9 @@ function FormWhatsappJS() {
                   />
                 </div>
                 <div className="mb-4">
-                  <h6>Mensagem</h6>
+                  <h6 className="text-gray-300">Mensagem</h6>
                   <textarea
-                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-3 border border-gray-300 rounded-[3px] focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Digite sua mensagem"
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
@@ -130,7 +134,7 @@ function FormWhatsappJS() {
             </div>
 
             <div>
-              <p className="text-paragraph2">
+              <p className="text-gray-300 text-paragraph2">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -145,12 +149,12 @@ function FormWhatsappJS() {
                 <input
                   type="checkbox"
                   id="consent"
-                  className="mr-2"
+                  className="mr-2 cursor-pointer"
                   checked={agree}
                   onChange={() => setAgree(!agree)}
                 />
                 <label htmlFor="consent" className="text-white">
-                  <h1>Eu concordo em receber outras comunicações da MIGNOW.</h1>
+                  <h1 className="text-paragraph3">Eu concordo em receber outras comunicações da MIGNOW.</h1>
                 </label>
               </div>
               <p className="text-gray-300 text-sm">
@@ -170,7 +174,7 @@ function FormWhatsappJS() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="w-[120px] justify-center bg-blue-500 text-white p-3 rounded-[3px] hover:bg-blue-600 transition duration-300"
+                className="w-[120px] justify-center bg-blue-600 text-white p-3 rounded-[3px] hover:bg-primary transition duration-300"
               >
                 Enviar
               </button>
