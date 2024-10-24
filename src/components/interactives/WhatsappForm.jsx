@@ -9,6 +9,9 @@ const WhatsappForm = () => {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState("");
 
+
+
+
   const capitalizeFirstLetter = (str) => {
     return str
       .toLowerCase()
@@ -105,6 +108,8 @@ const WhatsappForm = () => {
       setPhone(formattedPhone);
     }
   };
+
+  
 
   return (
     <div>
