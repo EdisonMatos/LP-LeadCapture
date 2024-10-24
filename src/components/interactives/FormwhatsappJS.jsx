@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 import SectionArea from "../sectionElements/SectionArea";
 import SectionWrapper from "../sectionElements/SectionWrapper";
 import emailjs from "@emailjs/browser";
@@ -10,13 +11,23 @@ function FormWhatsappJS() {
   const [email, setEmail] = useState("");
   const [lastname, setLastName] = useState("");
   const [message, setMessage] = useState("");
-  const [agree, setAgree] = useState(false); 
+  const [agree, setAgree] = useState(false);
+
+  const navigate = useNavigate();
 
   function sendEmail(e) {
     e.preventDefault();
 
-    if(Companyname ==="" || name === "" || phone=== "" || email === "" || lastname ==="" || message === ""){
-        alert("Preencha todos os campos")
+    if (
+      Companyname === "" ||
+      name === "" ||
+      phone === "" ||
+      email === "" ||
+      lastname === "" ||
+      message === ""
+    ) {
+      alert("Preencha todos os campos");
+      return;
     }
 
     if (!agree) {
@@ -32,15 +43,15 @@ function FormWhatsappJS() {
 
     emailjs
       .send(
-        "service_dbjb7ym", 
-        "template_2bu0xc5", 
+        "service_dbjb7ym",
+        "template_2bu0xc5",
         templateParams,
-        "HkoWapgpzEJhNjsHU" 
+        "HkoWapgpzEJhNjsHU"
       )
       .then(
         (response) => {
           console.log("EMAIL ENVIADO", response.status, response.text);
-          alert("Email enviado com sucesso!");
+          window.open("/email-enviado", "_blank");
 
           // Limpar campos do formulário
           setCompanyName("");
@@ -154,7 +165,9 @@ function FormWhatsappJS() {
                   onChange={() => setAgree(!agree)}
                 />
                 <label htmlFor="consent" className="text-white">
-                  <h1 className="text-paragraph3">Eu concordo em receber outras comunicações da MIGNOW.</h1>
+                  <h1 className="text-paragraph3">
+                    Eu concordo em receber outras comunicações da MIGNOW.
+                  </h1>
                 </label>
               </div>
               <p className="text-gray-300 text-sm">
